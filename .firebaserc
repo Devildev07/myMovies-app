@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ionic-movie-app-4a9ee": {
+      "hosting": {
+        "app": [
+          "ionic-movie-app-4a9ee"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ionic-movie-app-4a9ee"
+  }
+}

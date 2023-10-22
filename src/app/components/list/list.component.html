@@ -1,24 +1,33 @@
- <ion-list>
-    <ion-row>
-      <ion-col  sizeMd="2" *ngFor="let movie of movies">
-        <ion-card>
-          <img
-            alt="Silhouette of mountains"
-            [src]="movie.poster"
-            width="100%"
-          />
-          <ion-card-header>
-            <ion-card-title
-              >{{movie.title}}
-              <ion-badge shape="round ">{{movie.rating}}</ion-badge>
-            </ion-card-title>
-            <ion-card-subtitle>
-              <div>{{movie.genre}}</div>
-              <!-- <ion-icon name="log-out-outline" slot="end"></ion-icon> -->
-            </ion-card-subtitle>
-          </ion-card-header>
-        </ion-card>
-      </ion-col>
-      <!--  -->
-    </ion-row>
-  </ion-list>
+<ion-list>
+  <ion-row>
+    <ion-col sizeMd="2" *ngFor="let movie of movies">
+      <ion-card>
+        <img alt="Silhouette of mountains" [src]="movie.poster" width="100%" />
+        <ion-card-header>
+          <ion-card-title
+            >{{ movie.title }}
+            <ion-badge shape="round ">{{ movie.rating }}</ion-badge>
+          </ion-card-title>
+          <ion-card-subtitle>
+            <div>{{ movie.genre }}</div>
+            <!-- <ion-icon name="log-out-outline" slot="end"></ion-icon> -->
+          </ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-buttons class="ion-justify-content-between">
+            <ion-button
+              expand="block"
+              shape="round"
+              color="primary"
+              slot="start"
+              (click)="gotoDetailsPage(movie.id)"
+              >Know more</ion-button
+            >
+            <ion-icon size="default" name="heart-outline" slot="end"></ion-icon>
+          </ion-buttons>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    <!--  -->
+  </ion-row>
+</ion-list>

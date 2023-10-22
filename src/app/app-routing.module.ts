@@ -15,19 +15,32 @@ const routes: Routes = [
   },
   {
     path: 'signup',
-    loadChildren: () => import('./auth/signup/signup.module').then( m => m.SignupPageModule)
+    loadChildren: () =>
+      import('./auth/signup/signup.module').then((m) => m.SignupPageModule),
   },
   {
     path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+    loadChildren: () =>
+      import('./pages/home/home.module').then((m) => m.HomePageModule),
   },
   {
     path: 'profile',
-    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
+    loadChildren: () =>
+      import('./pages/profile/profile.module').then((m) => m.ProfilePageModule),
   },
   {
     path: 'add-movies',
-    loadChildren: () => import('./pages/add-data/add-movies/add-movies.module').then( m => m.AddMoviesPageModule)
+    loadChildren: () =>
+      import('./pages/add-data/add-movies/add-movies.module').then(
+        (m) => m.AddMoviesPageModule
+      ),
+  },
+  {
+    path: 'movie-detail/:id',
+    loadChildren: () =>
+      import('./pages/movie-detail/movie-detail.module').then(
+        (m) => m.MovieDetailPageModule
+      ),
   },
 ];
 

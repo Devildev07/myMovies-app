@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-list',
@@ -79,7 +81,12 @@ export class ListComponent implements OnInit {
     },
   ];
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit() {}
+
+  // navigate to detail page
+  gotoDetailsPage(movieId: number) {
+    this.router.navigate(['/movie-detail', movieId]);
+  }
 }

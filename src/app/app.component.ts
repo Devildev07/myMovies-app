@@ -10,6 +10,7 @@ export class AppComponent implements OnInit {
     { title: 'Movies', url: '/home', icon: 'film' },
     { title: 'Profile', url: '/profile', icon: 'person' },
     { title: 'Favorite', url: '/favorite', icon: 'heart' },
+    { title: 'Add Movies', url: '/add-movies', icon: 'add' },
   ];
   constructor() {}
 

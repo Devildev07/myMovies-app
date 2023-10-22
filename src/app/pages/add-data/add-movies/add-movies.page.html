@@ -1,13 +1,92 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>add-movies</ion-title>
+    <ion-back-button defaultHref="/home" slot="start"></ion-back-button>
+    <ion-title>Add New Movies</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">add-movies</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <form #addMovie="ngForm" (ngSubmit)="addData(addMovie)">
+    <!-- Title -->
+    <ion-input
+      type="text"
+      label="Movie Title"
+      name="movie_title"
+      labelPlacement="floating"
+      placeholder="Enter movie title"
+      ngModel
+    ></ion-input>
+    <!-- Desc -->
+    <ion-input
+      type="text"
+      label="Movie Description"
+      name="movie_desc"
+      labelPlacement="floating"
+      placeholder="Enter Movie Description"
+      ngModel
+    ></ion-input>
+    <!-- Poster -->
+    <ion-input
+      type="text"
+      label="Movie Poster"
+      name="movie_poster"
+      labelPlacement="floating"
+      placeholder="Enter Movie Poster"
+      ngModel
+    ></ion-input>
+    <!-- Runtime -->
+    <ion-input
+      type="text"
+      label="Movie Runtime"
+      name="movie_runTime"
+      labelPlacement="floating"
+      placeholder="Enter Movie Runtime"
+      ngModel
+    ></ion-input>
+    <!-- Release Year -->
+    <ion-input
+      label="Movie Release Year"
+      name="movie_releaseYear"
+      labelPlacement="floating"
+      placeholder="Enter Movie Release Year"
+      (ionFocus)="openYearPicker()"
+      readonly
+      type="number"
+      [(ngModel)]="selectedYear"
+    ></ion-input>
+    <!--  -->
+    <ion-select
+      type="text"
+      name="movie_genre"
+      ngModel
+      label="Movie Genre"
+      label-placement="floating"
+      placeholder="Enter Movie Genre"
+      ngModel
+    >
+      <ion-select-option value="action">Action</ion-select-option>
+      <ion-select-option value="drama">Drama</ion-select-option>
+    </ion-select>
+    <!--  -->
+    <ion-input
+      type="text"
+      label="Movie Watch Link"
+      name="movie_watchLink"
+      labelPlacement="floating"
+      placeholder="Enter movie Watch Link"
+      ngModel
+    ></ion-input>
+    <!--  -->
+    <ion-input
+      type="text"
+      label="Movie Download Link"
+      name="movie_downloadLink"
+      labelPlacement="floating"
+      placeholder="Enter movie Download Link"
+      ngModel
+    ></ion-input>
+    <!--  -->
+    <ion-button type="submit" shape="round" color="success1">Submit</ion-button>
+    <!--  -->
+  </form>
 </ion-content>

@@ -44,3 +44,18 @@
 ion-item {
   --transition: none;
 }
+
+
+// picker
+.picker-wrapper {
+    border-radius: 10px !important;
+    bottom: 10% !important ;
+    top: 10% !important;
+    .picker-toolbar.sc-ion-picker-md{
+      justify-content: space-between;
+    }
+
+    .picker-opts{
+        top: 0 !important;
+    }
+}

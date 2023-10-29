@@ -1,15 +1,19 @@
 <ion-list>
   <ion-row>
-    <ion-col sizeMd="2" *ngFor="let movie of movies">
-      <ion-card>
-        <img alt="Silhouette of mountains" [src]="movie.poster" width="100%" />
-        <ion-card-header>
-          <ion-card-title
-            >{{ movie.title }}
-            <ion-badge shape="round ">{{ movie.rating }}</ion-badge>
+    <ion-col sizeMd="2" *ngFor="let movie of getMoviesData">
+      <ion-card class="myCard" (click)="gotoDetailsPage(movie.id)">
+        <ion-card-header class="p-0">
+          <img
+            alt="Silhouette of mountains"
+            [src]="movie.movie_poster"
+            width="100%"
+          />
+          <ion-card-title>
+            {{ movie.movie_title }}
+            <ion-badge shape="round ">{{ movie.movie_releaseYear }}</ion-badge>
           </ion-card-title>
           <ion-card-subtitle>
-            <div>{{ movie.genre }}</div>
+            <div>{{ movie.movie_genre }}</div>
             <!-- <ion-icon name="log-out-outline" slot="end"></ion-icon> -->
           </ion-card-subtitle>
         </ion-card-header>
@@ -25,6 +29,9 @@
             >
             <ion-icon size="default" name="heart-outline" slot="end"></ion-icon>
           </ion-buttons>
+          <!-- <div>
+            <video [src]="movie.movie_watchLink" width="100%" controls></video>
+          </div> -->
         </ion-card-content>
       </ion-card>
     </ion-col>

@@ -1,14 +1,48 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-back-button defaultHref="/home" slot="start"></ion-back-button>
-    <ion-title>movie-detail</ion-title>
+    <ion-title *ngIf="movie">{{movie.movie_title}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">movie-detail</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="detail-container" *ngIf="movie">
+    <div class="img-box">
+      <ion-img [src]="movie.movie_poster" alt="Movie Poster"></ion-img>
+    </div>
+    <div class="content-box ion-padding">
+      <ion-card-content>
+        <ion-card-title>{{ movie.movie_title }}</ion-card-title>
+        <ion-card-subtitle>Genre: {{ movie.movie_genre }}</ion-card-subtitle>
+        <ion-card-subtitle
+          >Release Year: {{ movie.movie_releaseYear }}</ion-card-subtitle
+        >
+        <ion-card-subtitle
+          >Runtime: {{ movie.movie_runTime }}</ion-card-subtitle
+        >
+        <ion-card-subtitle
+          >Description: <br />
+          {{ movie.movie_desc }}</ion-card-subtitle
+        >
+      </ion-card-content>
+      <a
+        href="{{movie.movie_downloadLink}}"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <ion-button shape="round" color="primary">Download </ion-button>
+      </a>
+    </div>
+  </div>
+  <!--  -->
+  <div class="ion-padding flex">
+    <ion-icon name="videocam-outline" slot="start" size="large"></ion-icon>
+    <ion-title>
+      Watch Online
+    </ion-title>
+  </div>
+  <!--  -->
+  <div class="video-container" *ngIf="movie">
+    <video [src]="movie.movie_watchLink" controls></video>
+  </div>
 </ion-content>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { GetDataService } from 'src/app/services/getData/get-data.service';
+GetDataService;
 
 @Component({
   selector: 'app-list',
@@ -8,82 +9,25 @@ import { Router } from '@angular/router';
   styleUrls: ['./list.component.scss'],
 })
 export class ListComponent implements OnInit {
-  public movies = [
-    {
-      id: 1,
-      title: 'The Godfather',
-      rating: 4.5,
-      desc: 'The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.',
-      year: 1972,
-      length: 175,
-      actors: ['Marlon Brando', 'Al Pacino', 'James Caan'],
-      directors: ['Francis Ford Coppola'],
-      genre: 'Drama',
-      plot: 'The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.',
-      poster:
-        'https://www.themoviedb.org/t/p/w220_and_h330_face/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg',
-    },
-    {
-      id: 2,
-      title: 'The Godfather',
-      rating: 4.5,
-      desc: 'The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.',
-      year: 1972,
-      length: 175,
-      actors: ['Marlon Brando', 'Al Pacino', 'James Caan'],
-      directors: ['Francis Ford Coppola'],
-      genre: 'Drama',
-      plot: 'The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.',
-      poster:
-        'https://www.themoviedb.org/t/p/w220_and_h330_face/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg',
-    },
-    {
-      id: 3,
-      title: 'The Godfather',
-      rating: 4.5,
-      desc: 'The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.',
-      year: 1972,
-      length: 175,
-      actors: ['Marlon Brando', 'Al Pacino', 'James Caan'],
-      directors: ['Francis Ford Coppola'],
-      genre: 'Drama',
-      plot: 'The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.',
-      poster:
-        'https://www.themoviedb.org/t/p/w220_and_h330_face/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg',
-    },
-    {
-      id: 4,
-      title: 'The Godfather',
-      rating: 4.5,
-      desc: 'The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.',
-      year: 1972,
-      length: 175,
-      actors: ['Marlon Brando', 'Al Pacino', 'James Caan'],
-      directors: ['Francis Ford Coppola'],
-      genre: 'Drama',
-      plot: 'The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.',
-      poster:
-        'https://www.themoviedb.org/t/p/w220_and_h330_face/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg',
-    },
-    {
-      id: 5,
-      title: 'The Godfather',
-      rating: 4.5,
-      desc: 'The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.',
-      year: 1972,
-      length: 175,
-      actors: ['Marlon Brando', 'Al Pacino', 'James Caan'],
-      directors: ['Francis Ford Coppola'],
-      genre: 'Drama',
-      plot: 'The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.',
-      poster:
-        'https://www.themoviedb.org/t/p/w220_and_h330_face/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg',
-    },
-  ];
+  public getMoviesData: any;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, public getDataService: GetDataService) {
+    this.getDataService.myEventEmitter.subscribe((data) => {
+      this.getMovies();
+      this.getMoviesData.push(data);
+      console.log('Received event with Data:', data);
+      
+    })
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getMovies();
+  }
+
+  async getMovies() {
+    this.getMoviesData = await this.getDataService.getData('movies');
+      console.log('movie Data from Firebase:', this.getMoviesData);
+  }
 
   // navigate to detail page
   gotoDetailsPage(movieId: number) {

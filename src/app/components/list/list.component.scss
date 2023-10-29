@@ -1,0 +1,12 @@
+.myCard{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+.p-0{
+    padding: 0;
+}
+ion-card-title,ion-card-subtitle{
+        padding: 0.5rem 1rem 0rem;
+}

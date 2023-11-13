@@ -1,8 +1,8 @@
-<ion-list>
+<ion-list class="ion-padding-vertical">
   <ion-row>
     <ion-col sizeMd="2" *ngFor="let movie of getMoviesData">
-      <ion-card class="myCard" (click)="gotoDetailsPage(movie.id)">
-        <ion-card-header class="p-0">
+      <ion-card class="myCard" >
+        <ion-card-header class="p-0" (click)="gotoDetailsPage(movie.id)">
           <img
             alt="Silhouette of mountains"
             [src]="movie.movie_poster"
@@ -29,9 +29,14 @@
             >
             <ion-icon size="default" name="heart-outline" slot="end"></ion-icon>
           </ion-buttons>
-          <!-- <div>
-            <video [src]="movie.movie_watchLink" width="100%" controls></video>
-          </div> -->
+          <ion-button expand="block" shape="round" color="primary" slot="start" (click)="openEditModal(movie)">
+            Edit
+            <ion-icon
+              size="default"
+              name="create-outline"
+              slot="end"
+            ></ion-icon>
+          </ion-button>
         </ion-card-content>
       </ion-card>
     </ion-col>

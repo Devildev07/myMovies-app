@@ -16,8 +16,7 @@ export class ListComponent implements OnInit {
       this.getMovies();
       this.getMoviesData.push(data);
       console.log('Received event with Data:', data);
-      
-    })
+    });
   }
 
   ngOnInit() {
@@ -26,11 +25,17 @@ export class ListComponent implements OnInit {
 
   async getMovies() {
     this.getMoviesData = await this.getDataService.getData('movies');
-      console.log('movie Data from Firebase:', this.getMoviesData);
+    console.log('movie Data from Firebase:', this.getMoviesData);
   }
 
   // navigate to detail page
   gotoDetailsPage(movieId: number) {
     this.router.navigate(['/movie-detail', movieId]);
+  }
+
+  // open edit modal
+  openEditModal(movie:any){
+console.log('movie', movie);
+
   }
 }

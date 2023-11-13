@@ -25,22 +25,51 @@
           {{ movie.movie_desc }}</ion-card-subtitle
         >
       </ion-card-content>
-      <a
+     
+    </div>
+  </div>
+
+  <div class="ion-padding flex ion-wrap " *ngIf="movie">
+     <a
         href="{{movie.movie_downloadLink}}"
         target="_blank"
         rel="noopener noreferrer"
       >
         <ion-button shape="round" color="primary">Download </ion-button>
       </a>
-    </div>
+      <a
+        href="{{movie.movie_watchLink}}"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <ion-button shape="round" color="primary">
+          <ion-icon
+            name="videocam-outline"
+            slot="start"
+           
+          ></ion-icon>
+          Watch Online 
+        </ion-button>
+      </a>
   </div>
-  <!--  -->
+
+  <!-- play trailer section -->
   <div class="ion-padding flex">
-    <ion-icon name="videocam-outline" slot="start" size="large"></ion-icon>
-    <ion-title> Watch Online </ion-title>
+    <ion-icon name="play-outline" slot="start" size="large"></ion-icon>
+    <ion-title> Play Trailer </ion-title>
   </div>
   <!--  -->
   <div class="video-container" *ngIf="movie">
-    <video [src]="movie.movie_watchLink" controls></video>
+    <video [src]="movie.movie_trailerLink" controls></video>
   </div>
+
+  <!-- watch section -->
+  <!-- <div class="ion-padding flex">
+    <ion-icon name="videocam-outline" slot="start" size="large"></ion-icon>
+    <ion-title> Watch Online </ion-title>
+  </div> -->
+  <!--  -->
+  <!-- <div class="video-container" *ngIf="movie">
+    <video [src]="movie.movie_watchLink" controls></video>
+  </div> -->
 </ion-content>

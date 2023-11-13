@@ -1,0 +1,118 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Edit {{ movieData.movie_title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="ion-padding">
+    <!-- Title -->
+    <ion-input
+      type="text"
+      label="Movie Title"
+      name="movie_title"
+      label-placement="floating"
+      placeholder="Enter movie title"
+      [(ngModel)]="movieData.movie_title"
+    ></ion-input>
+    <!-- Desc -->
+    <ion-input
+      type="text"
+      label="Movie Description"
+      name="movie_desc"
+      label-placement="floating"
+      placeholder="Enter Movie Description"
+      [(ngModel)]="movieData.movie_desc"
+    ></ion-input>
+    <!-- Poster -->
+    <ion-input
+      type="text"
+      label="Movie Poster"
+      name="movie_poster"
+      label-placement="floating"
+      placeholder="Enter Movie Poster"
+      [(ngModel)]="movieData.movie_poster"
+    ></ion-input>
+    <!-- Runtime -->
+    <!-- <ion-input
+        type="text"
+        label="Movie Runtime"
+        name="movie_runTime"
+        label-placement="floating"
+        placeholder="Enter Movie Runtime"
+        [(ngModel)]="movieData.movie_runTime"
+      ></ion-input> -->
+    <!-- Release Year -->
+    <!-- <ion-input
+        label="Movie Release Year"
+        name="movie_releaseYear"
+        label-placement="floating"
+        placeholder="Enter Movie Release Year"
+        (ionFocus)="openYearPicker()"
+        readonly
+        type="number"
+        [(ngModel)]="selectedYear"
+      ></ion-input> -->
+    <!-- Genre -->
+    <ion-select
+      type="text"
+      name="movie_genre"
+      label="Movie Genre"
+      label-placement="floating"
+      placeholder="Enter Movie Genre"
+      [(ngModel)]="movieData.movie_genre"
+    >
+      <ion-select-option value="Action">Action</ion-select-option>
+      <ion-select-option value="Adventure">Adventure</ion-select-option>
+      <ion-select-option value="Animation">Animation</ion-select-option>
+      <ion-select-option value="Comedy">Comedy</ion-select-option>
+      <ion-select-option value="Crime">Crime</ion-select-option>
+      <ion-select-option value="Documentary">Documentary</ion-select-option>
+      <ion-select-option value="Drama">Drama</ion-select-option>
+      <ion-select-option value="Family">Family</ion-select-option>
+      <ion-select-option value="Fantasy">Fantasy</ion-select-option>
+      <ion-select-option value="History">History</ion-select-option>
+      <ion-select-option value="Horror">Horror</ion-select-option>
+      <ion-select-option value="Mystery">Mystery</ion-select-option>
+      <ion-select-option value="Romance">Romance</ion-select-option>
+      <ion-select-option value="Science Fiction"
+        >Science Fiction</ion-select-option
+      >
+      <ion-select-option value="Thriller">Thriller</ion-select-option>
+    </ion-select>
+    <!-- Watch -->
+    <ion-input
+      type="text"
+      label="Movie Watch Link"
+      name="movie_watchLink"
+      label-placement="floating"
+      placeholder="Enter movie Watch Link"
+      [(ngModel)]="movieData.movie_watchLink"
+    ></ion-input>
+    <!-- Download -->
+    <ion-input
+      type="text"
+      label="Movie Download Link"
+      name="movie_downloadLink"
+      label-placement="floating"
+      placeholder="Enter movie Download Link"
+      [(ngModel)]="movieData.movie_downloadLink"
+    ></ion-input>
+    <!-- Play Trailer -->
+    <ion-input
+      type="text"
+      label="Movie Trailer"
+      name="movie_trailerLink"
+      label-placement="floating"
+      placeholder="Enter movie Trailer Link"
+      [(ngModel)]="movieData.movie_trailerLink"
+    ></ion-input>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-padding flex ion-justify-content-between">
+  <ion-button slot="start" shape="round" (click)="saveChanges()">
+    Save Changes
+  </ion-button>
+  <ion-button shape="round" slot="end" (click)="closeModal()">Close</ion-button>
+</ion-footer>

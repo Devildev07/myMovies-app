@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
+import { UpdateMoviesPage } from 'src/app/pages/add-data/update-movies/update-movies.page';
 import { GetDataService } from 'src/app/services/getData/get-data.service';
-GetDataService;
+
 
 @Component({
   selector: 'app-list',
@@ -11,7 +13,11 @@ GetDataService;
 export class ListComponent implements OnInit {
   public getMoviesData: any;
 
-  constructor(private router: Router, public getDataService: GetDataService) {
+  constructor(
+    private router: Router,
+    public getDataService: GetDataService,
+    public modalController: ModalController
+  ) {
     this.getDataService.myEventEmitter.subscribe((data) => {
       this.getMovies();
       this.getMoviesData.push(data);
@@ -34,8 +40,13 @@ export class ListComponent implements OnInit {
   }
 
   // open edit modal
-  openEditModal(movie:any){
-console.log('movie', movie);
+ async openEditModal(movie: any) {
+    console.log('movie', movie);
+    const modal = await this.modalController.create({
+      component: UpdateMoviesPage,
+      componentProps: { movieData: movie },
+    });
 
+    await modal.present();
   }
 }

@@ -42,6 +42,10 @@ const routes: Routes = [
         (m) => m.MovieDetailPageModule
       ),
   },
+  {
+    path: 'update-movies',
+    loadChildren: () => import('./pages/add-data/update-movies/update-movies.module').then( m => m.UpdateMoviesPageModule)
+  },
 ];
 
 @NgModule({

@@ -5,8 +5,8 @@
         <ion-list id="inbox-list">
           <ion-item lines="none">
             <div class="logo">
-              <ion-list-header> iMovies </ion-list-header>
-              <ion-note>hi@ionicframework.com</ion-note>
+              <ion-list-header> Movies Hub </ion-list-header>
+              <ion-note>Hi {{ authService.userEmail }}</ion-note>
             </div>
             <ion-toggle
               [(ngModel)]="themeToggle"

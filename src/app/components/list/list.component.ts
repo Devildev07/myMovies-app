@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
+import { AuthService } from 'src/app/auth/auth.service';
 import { UpdateMoviesPage } from 'src/app/pages/add-data/update-movies/update-movies.page';
 import { GetDataService } from 'src/app/services/getData/get-data.service';
+
 
 
 @Component({
@@ -16,7 +18,8 @@ export class ListComponent implements OnInit {
   constructor(
     private router: Router,
     public getDataService: GetDataService,
-    public modalController: ModalController
+    public modalController: ModalController,
+    public authService: AuthService
   ) {
     this.getDataService.myEventEmitter.subscribe((data) => {
       this.getMovies();

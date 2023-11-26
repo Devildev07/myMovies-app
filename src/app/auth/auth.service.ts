@@ -18,6 +18,7 @@ export class AuthService {
 
         this.isUserLogin = true;
         this.userEmail = data.user.user.email;
+        console.log('isUserLogin', this.isUserLogin);
       }
     }
   }

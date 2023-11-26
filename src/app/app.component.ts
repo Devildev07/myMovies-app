@@ -3,23 +3,35 @@ import { AuthService } from './auth/auth.service';
 import { Router } from '@angular/router';
 import { CommonService } from './services/common-service/common.service';
 
-
-
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent implements OnInit {
+  superAdminEmail = this.authService.userEmail;
   themeToggle = false;
   public appPages = [
     { title: 'Movies', url: '/home', icon: 'film' },
     { title: 'Profile', url: '/profile', icon: 'person' },
     { title: 'Favorite', url: '/favorite', icon: 'heart' },
-    { title: 'Add Movies', url: '/add-movies', icon: 'add' },
+    // { title: 'Add Movies', url: '/add-movies', icon: 'add',},
   ];
-  constructor(public authService: AuthService, public router: Router,
-    public commonService: CommonService) {}
+  constructor(
+    public authService: AuthService,
+    public router: Router,
+    public commonService: CommonService
+  ) {
+    console.log('superAdminEmail', this.superAdminEmail);
+
+    if (this.superAdminEmail === 'dewanshusingh21@gmail.com') {
+      this.appPages.push({
+        title: 'Add Movies',
+        url: '/add-movies',
+        icon: 'add',
+      });
+    }
+  }
 
   ngOnInit() {
     // Use matchMedia to check the user preference
@@ -51,6 +63,7 @@ export class AppComponent implements OnInit {
     document.body.classList.toggle('dark', shouldAdd);
   }
 
+  // logout
   async logOut() {
     this.authService.signOutUser().then(() => {
       this.authService.isUserLogin = false;

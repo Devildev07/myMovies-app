@@ -62,7 +62,7 @@ export class SignupPage implements OnInit {
         });
       if (user) {
         loading.dismiss();
-        this.router.navigateByUrl('/login', { replaceUrl: true });
+        this.router.navigateByUrl('/login');
       } else {
         console.log('provide correct value');
       }

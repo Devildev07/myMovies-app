@@ -10,7 +10,7 @@ export class AuthService {
 
   constructor(private ngFireAuth: AngularFireAuth) {
     const item = localStorage.getItem('userData');
-    console.log('item', item);
+    // console.log('item', item);
     if (item != undefined && item != null) {
       let data = JSON.parse(item);
       if (data.isUserLogin) {
@@ -46,5 +46,12 @@ export class AuthService {
     return this.ngFireAuth.authState;
   }
 
-
+  //encrypt password
+  encryptPass(getPass: string) {
+    var passA = btoa(getPass);
+    var passB = btoa('devil');
+    var generatedPass = passA + '@$98#%' + passB;
+    console.log('generatedPass', generatedPass);
+    return generatedPass;
+  }
 }

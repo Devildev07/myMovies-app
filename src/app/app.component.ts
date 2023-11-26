@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from './auth/auth.service';
+import { Router } from '@angular/router';
+import { CommonService } from './services/common-service/common.service';
+
+
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -12,7 +18,8 @@ export class AppComponent implements OnInit {
     { title: 'Favorite', url: '/favorite', icon: 'heart' },
     { title: 'Add Movies', url: '/add-movies', icon: 'add' },
   ];
-  constructor() {}
+  constructor(public authService: AuthService, public router: Router,
+    public commonService: CommonService) {}
 
   ngOnInit() {
     // Use matchMedia to check the user preference
@@ -44,5 +51,11 @@ export class AppComponent implements OnInit {
     document.body.classList.toggle('dark', shouldAdd);
   }
 
-  logOut() {}
+  async logOut() {
+    this.authService.signOutUser().then(() => {
+      this.authService.isUserLogin = false;
+      this.router.navigate(['/login']);
+      this.commonService.removeLocalStorage('userData');
+    });
+  }
 }

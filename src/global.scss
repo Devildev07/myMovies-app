@@ -25,7 +25,6 @@
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
-
 /* This sets a different background and item background in light mode on ios */
 .ios body {
   --ion-background-color: #f2f2f6;
@@ -45,17 +44,70 @@ ion-item {
   --transition: none;
 }
 
-
 // picker
 .picker-wrapper {
-    border-radius: 10px !important;
-    bottom: 10% !important ;
-    top: 10% !important;
-    .picker-toolbar.sc-ion-picker-md{
-      justify-content: space-between;
+  border-radius: 10px !important;
+  bottom: 10% !important ;
+  top: 10% !important;
+  .picker-toolbar.sc-ion-picker-md {
+    justify-content: space-between;
+  }
+
+  .picker-opts {
+    top: 0 !important;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+
+  .flex-gap-0-5 {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  form {
+    width: 60%;
+
+    ion-item {
+      border-radius: 0.75rem;
+
+      ion-input {
+        margin: 0rem 0 0.3rem 0;
+      }
     }
 
-    .picker-opts{
-        top: 0 !important;
+    .links {
+      text-align: right;
+      line-height: 1.3;
+
+      a {
+        text-decoration: none;
+      }
     }
+
+    .signUp {
+      position: absolute;
+      bottom: 2rem;
+      text-align: center;
+      left: 10%;
+      right: 10%;
+    }
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  form {
+    width: 90% !important;
+
+    .signUp {
+      bottom: 1rem !important;
+    }
+  }
 }

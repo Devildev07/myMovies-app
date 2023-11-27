@@ -9,7 +9,7 @@ import { CommonService } from './services/common-service/common.service';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  superAdminEmail = this.authService.userEmail;
+  superAdminEmail: any;
   themeToggle = false;
   public appPages = [
     { title: 'Movies', url: '/home', icon: 'film' },
@@ -23,8 +23,8 @@ export class AppComponent implements OnInit {
     public commonService: CommonService
   ) {
     console.log('superAdminEmail', this.superAdminEmail);
-
-    if (this.superAdminEmail === 'dewanshusingh21@gmail.com') {
+    this.superAdminEmail = this.authService.userEmail;
+    if (this.authService.userEmail === 'dewanshusingh21@gmail.com') {
       this.appPages.push({
         title: 'Add Movies',
         url: '/add-movies',

@@ -12,13 +12,16 @@ export class AuthService {
     const item = localStorage.getItem('userData');
     // console.log('item', item);
     if (item != undefined && item != null) {
-      let data = JSON.parse(item);
+      let data = JSON.parse(JSON.parse(item));
+      // console.log('data', typeof data, data);
+
       if (data.isUserLogin) {
-        console.log('data', data);
+        // console.log('data', data);
 
         this.isUserLogin = true;
         this.userEmail = data.user.user.email;
-        console.log('isUserLogin', this.isUserLogin);
+        // console.log('userEmail', this.userEmail);
+        // console.log('isUserLogin', this.isUserLogin);
       }
     }
   }

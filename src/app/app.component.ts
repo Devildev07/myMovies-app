@@ -22,8 +22,8 @@ export class AppComponent implements OnInit {
     public router: Router,
     public commonService: CommonService
   ) {
-    console.log('superAdminEmail', this.superAdminEmail);
     this.superAdminEmail = this.authService.userEmail;
+    console.log('superAdminEmail', this.superAdminEmail);
     if (this.authService.userEmail === 'dewanshusingh21@gmail.com') {
       this.appPages.push({
         title: 'Add Movies',

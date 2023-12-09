@@ -20,55 +20,110 @@
   </ion-grid>
 
   <!--  -->
-  <form #profileForm="ngForm" (ngSubmit)="updateProfile(profileForm)">
-    <ion-input
-      type="text"
-      label="Name"
-      name="uname"
-      labelPlacement="floating"
-      placeholder="Enter Name"
-      ngModel
-    ></ion-input>
+  <div *ngIf="profileLength === 0">
+    <form #addProfileForm="ngForm" (ngSubmit)="addProfile(addProfileForm)">
+      <ion-input
+        type="text"
+        label="Name"
+        name="uname"
+        labelPlacement="floating"
+        placeholder="Enter Name"
+        ngModel
+      ></ion-input>
 
-    <ion-input
-      type="text"
-      label="Email"
-      name="email"
-      labelPlacement="floating"
-      placeholder="Enter Email"
-      [(ngModel)]="userEmail"
-    >
-    </ion-input>
+      <ion-input
+        type="text"
+        label="Email"
+        name="email"
+        labelPlacement="floating"
+        placeholder="Enter Email"
+        [(ngModel)]="userEmail"
+      >
+      </ion-input>
 
-    <ion-button
-      type="submit"
-      shape="round"
-      color="success"
-      class="text-center"
-      expand="full"
-      style="margin: 0 auto"
+      <ion-button
+        type="submit"
+        shape="round"
+        color="success"
+        class="text-center"
+        expand="full"
+        style="margin: 0 auto"
       >
-      <ion-icon name="cloud-upload-outline"></ion-icon>
-      &nbsp; Update</ion-button
+        <ion-icon name="add-outline"></ion-icon>
+        &nbsp; Add</ion-button
+      >
+    </form>
+  </div>
+  <!--  -->
+  <div *ngIf="profileLength > 0">
+    <form
+      *ngFor="let profile of profiles"
+      #updateProfileForm="ngForm"
+      (ngSubmit)="updateProfile(updateProfileForm)"
     >
-    <ion-button
-      expand="full"
-      (click)="logOut()"
-      shape="round"
-      color="danger"
-      style="margin: 0 auto"
+      <ion-input
+        type="text"
+        label="Name"
+        name="uname"
+        labelPlacement="floating"
+        placeholder="Enter Name"
+        [(ngModel)]="profile.uname"
       >
-      <ion-icon name="exit-outline"></ion-icon>
-      &nbsp;Log Out</ion-button
-    >
-    <ion-button
-      expand="full"
-      (click)="logOut()"
-      shape="round"
-      style="margin: 0 auto"
+      </ion-input>
+
+      <ion-input
+        type="text"
+        label="Email"
+        name="email"
+        labelPlacement="floating"
+        placeholder="Enter Email"
+        [(ngModel)]="profile.email"
       >
-      <ion-icon name="repeat-outline"></ion-icon>
-      &nbsp;Reset Password
-    </ion-button>
-  </form>
+      </ion-input>
+
+      <ion-button
+        type="submit"
+        shape="round"
+        color="success"
+        class="text-center"
+        expand="full"
+        style="margin: 0 auto"
+      >
+        <ion-icon name="cloud-upload-outline"></ion-icon>
+        &nbsp; Update
+      </ion-button>
+
+      <ion-button
+        expand="full"
+        (click)="logOut()"
+        shape="round"
+        color="warning"
+        style="margin: 0 auto"
+      >
+        <ion-icon name="exit-outline"></ion-icon>
+        &nbsp;Log Out
+      </ion-button>
+
+      <ion-button
+        expand="full"
+        (click)="logOut()"
+        shape="round"
+        style="margin: 0 auto"
+      >
+        <ion-icon name="repeat-outline"></ion-icon>
+        &nbsp;Reset Password
+      </ion-button>
+
+      <ion-button
+        expand="full"
+        (click)="deleteProfile()"
+        shape="round"
+        style="margin: 0 auto"
+        color="danger"
+      >
+        <ion-icon name="trash-outline"></ion-icon>
+        &nbsp;Delete
+      </ion-button>
+    </form>
+  </div>
 </ion-content>

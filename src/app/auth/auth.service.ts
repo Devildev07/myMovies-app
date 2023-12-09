@@ -12,7 +12,8 @@ export class AuthService {
     const item = localStorage.getItem('userData');
     // console.log('item', item);
     if (item != undefined && item != null) {
-      let data = JSON.parse(JSON.parse(item));
+      // let data = JSON.parse(JSON.parse(item));
+      let data = JSON.parse(item);
       // console.log('data', typeof data, data);
 
       if (data.isUserLogin) {

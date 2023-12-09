@@ -5,8 +5,6 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { UpdateMoviesPage } from 'src/app/pages/add-data/update-movies/update-movies.page';
 import { GetDataService } from 'src/app/services/getData/get-data.service';
 
-
-
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -14,6 +12,7 @@ import { GetDataService } from 'src/app/services/getData/get-data.service';
 })
 export class ListComponent implements OnInit {
   public getMoviesData: any;
+  moviesData: any;
 
   constructor(
     private router: Router,
@@ -33,7 +32,11 @@ export class ListComponent implements OnInit {
   }
 
   async getMovies() {
-    this.getMoviesData = await this.getDataService.getData('movies');
+    this.moviesData = await this.getDataService.getData('movies');
+    const sortData = this.moviesData.sort((a: any, b: any) =>
+      a.movie_title.localeCompare(b.movie_title)
+    );
+    this.getMoviesData = sortData;
     console.log('movie Data from Firebase:', this.getMoviesData);
   }
 
@@ -43,7 +46,7 @@ export class ListComponent implements OnInit {
   }
 
   // open edit modal
- async openEditModal(movie: any) {
+  async openEditModal(movie: any) {
     console.log('movie', movie);
     const modal = await this.modalController.create({
       component: UpdateMoviesPage,

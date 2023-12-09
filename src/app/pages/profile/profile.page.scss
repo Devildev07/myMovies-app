@@ -28,8 +28,21 @@ form {
     border-bottom-left-radius: 3px;
   }
 
-  ion-button{
-    flex-basis: 12rem;
+  ion-button {
+    flex-basis: 16rem;
     flex-grow: 1;
+  }
+
+  ion-accordion-group {
+    width: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+
+    div.content-box {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding: 1rem;
+    }
   }
 }

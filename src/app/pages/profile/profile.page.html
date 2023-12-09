@@ -6,5 +6,63 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <!-- <app-list></app-list> -->
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-avatar>
+          <img
+            alt="Silhouette of a person's head"
+            src="https://ionicframework.com/docs/img/demos/avatar.svg"
+          />
+        </ion-avatar>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!--  -->
+  <form #profileForm="ngForm" (ngSubmit)="updateProfile(profileForm)">
+    <ion-input
+      type="text"
+      label="Name"
+      name="uname"
+      labelPlacement="floating"
+      placeholder="Enter Name"
+      ngModel
+    ></ion-input>
+
+    <ion-input
+      type="text"
+      label="Email"
+      name="email"
+      labelPlacement="floating"
+      placeholder="Enter Email"
+      [(ngModel)]="userEmail"
+    >
+    </ion-input>
+
+    <ion-button
+      type="submit"
+      shape="round"
+      color="success"
+      class="text-center"
+      expand="full"
+      style="margin: 0 auto"
+      >Update</ion-button
+    >
+    <ion-button
+      expand="full"
+      (click)="logOut()"
+      shape="round"
+      color="danger"
+      style="margin: 0 auto"
+      >Log Out</ion-button
+    >
+    <ion-button
+      expand="full"
+      (click)="logOut()"
+      shape="round"
+      style="margin: 0 auto"
+      >Reset Password
+    </ion-button>
+  </form>
 </ion-content>

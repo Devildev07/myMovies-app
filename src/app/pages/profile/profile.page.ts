@@ -22,11 +22,12 @@ export class ProfilePage implements OnInit {
     public agFire: Firestore
   ) {
     var localData = common.getLocalStorage('userData');
-    console.log('localData=', localData);
-    this.userEmail = localData.user.user.email;
+    // console.log('localData=', localData);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.userEmail = this.authService.userEmail;
+  }
 
   updateProfile(profileForm: any) {
     console.log(profileForm.value);
